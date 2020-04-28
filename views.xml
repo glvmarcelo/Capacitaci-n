@@ -1,0 +1,69 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="modeloarg.list">
+      <field name="name">vista.lista.modeloarg</field>
+      <field name="model">modeloarg.modeloarg</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group col="4">
+              <field name="name"/>
+              <field name="value"/>
+              <field name="value2"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="modeloarg.action_window">
+      <field name="name">Modelo de prueba</field>
+      <field name="res_model">modeloarg.modeloarg</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_type">form</field>
+      <field name="help" type="html"/>
+        <p class="oe_view_nocontent_create" >
+          Pulse para crear otro registro
+        <p/>
+      </field>
+    </record>
+
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="modeloarg.action_server">
+      <field name="name">modeloarg server</field>
+      <field name="model_id" ref="model_modeloarg_modeloarg"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+
+    <menuitem name="modeloarg" id="modeloarg.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Menu 1" id="modeloarg.menu_1" parent="modeloarg.menu_root"/>
+    <menuitem name="Menu 2" id="modeloarg.menu_2" parent="modeloarg.menu_root"/>
+
+    <!-- actions -->
+
+    <menuitem name="List" id="modeloarg.menu_1_list" parent="modeloarg.menu_1"
+              action="modeloarg.action_window"/>
+   
+
+  </data>
+</odoo>
